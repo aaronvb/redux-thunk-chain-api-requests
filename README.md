@@ -1,3 +1,6 @@
+# WIP
+This message will be removed when example is finished, sorry!
+
 # redux-thunk-chain-api-requests
 This is an example on how to chain API requests using redux-thunk and axios.
 
