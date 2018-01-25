@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const ISSUES_RETRIEVING = 'issues/ISSUES_RETRIEVING';
+export const ISSUES_REQUESTED = 'issues/ISSUES_REQUESTED';
 export const ISSUES_RECEIVED = 'issues/ISSUES_RECEIVED';
 
-export const ISSUE_RETRIEVING = 'issues/ISSUE_RETRIEVING';
-export const ISSUE_UPDATED = 'issues/ISSUE_UPDATED';
+export const ISSUE_REQUESTED = 'issues/ISSUE_REQUESTED';
+export const ISSUE_RECEIVED = 'issues/ISSUE_RECEIVED';
 
 const initialState = {
   issuesById: [],
@@ -14,7 +14,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ISSUES_RETRIEVING:
+    case ISSUES_REQUESTED:
       return {
         ...state,
         isRetrievingIssues: true,
@@ -23,9 +23,11 @@ export default (state = initialState, action) => {
     case ISSUES_RECEIVED:
       return {
         ...state,
+        isRetrievingIssues: !state.isRetrievingIssues,
+        issuesById: action.payload,
       };
 
-    case ISSUE_UPDATED:
+    case ISSUE_RECEIVED:
       return {
         ...state,
       };
@@ -33,4 +35,27 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+export const requestIssues = () => {
+  return dispatch => {
+    dispatch({
+      type: ISSUES_REQUESTED,
+    });
+
+    return fetchIssues()
+      .then(resp => resp.data)
+      .then(data =>
+        dispatch({
+          type: ISSUES_RECEIVED,
+          payload: data,
+        }),
+      );
+  };
+};
+
+const fetchIssues = () => {
+  const url = 'https://api.github.com/repos/facebook/react/issues';
+
+  return axios.get(url);
 };
