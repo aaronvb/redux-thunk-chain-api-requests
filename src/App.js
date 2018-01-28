@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>React Issues</h1>
+        <h1>Last 10 React Issues</h1>
         <a href="https://github.com/facebook/react/issues">
           https://github.com/facebook/react/issues
         </a>

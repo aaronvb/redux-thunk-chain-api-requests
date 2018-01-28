@@ -64,7 +64,11 @@ export const requestIssues = () => {
 const fetchIssues = () => {
   const url = 'https://api.github.com/repos/facebook/react/issues';
 
-  return axios.get(url);
+  return axios.get(url, {
+    params: {
+      per_page: 10
+    }
+  });
 };
 
 // Request individual issue using axios
