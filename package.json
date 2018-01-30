@@ -2,6 +2,7 @@
   "name": "redux-thunk-chain-api-example",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://aaronvb.github.io/redux-thunk-chain-api-requests-demo",
   "dependencies": {
     "axios": "^0.17.1",
     "react": "^16.2.0",
