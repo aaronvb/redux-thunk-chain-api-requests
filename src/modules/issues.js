@@ -95,3 +95,17 @@ const fetchIssue = issueNumber => {
 
   return axios.get(url);
 };
+
+// Request issues using axios
+// then request individual issue using axios
+// This is the magic that chains our redux-thunk promises together.
+export const requestIssuesAndIssueData = () => {
+  return (dispatch, getState) => {
+    dispatch(requestIssues()).then(() => {
+      const issuesArr = getState().issues.issuesById;
+      issuesArr.forEach(issue => {
+        dispatch(requestIssueHash(issue.number));
+      });
+    });
+  };
+};
