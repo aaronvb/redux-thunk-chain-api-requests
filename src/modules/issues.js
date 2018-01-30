@@ -3,11 +3,11 @@ import axios from 'axios';
 export const ISSUES_REQUESTED = 'issues/ISSUES_REQUESTED';
 export const ISSUES_RECEIVED = 'issues/ISSUES_RECEIVED';
 
-export const ISSUE_RECEIVED = 'issues/ISSUE_RECEIVED';
+export const ISSUE_COMMENTS_RECEIVED = 'issues/ISSUE_COMMENTS_RECEIVED';
 
 const initialState = {
   issuesById: [],
-  issuesByHash: {},
+  issueCommentsByHash: {},
   isRetrievingIssues: false,
 };
 
@@ -26,11 +26,11 @@ export default (state = initialState, action) => {
         issuesById: action.payload,
       };
 
-    case ISSUE_RECEIVED:
+    case ISSUE_COMMENTS_RECEIVED:
       return {
         ...state,
-        issuesByHash: {
-          ...state.issuesByHash,
+        issueCommentsByHash: {
+          ...state.issueCommentsByHash,
           [action.id]: action.payload,
         },
       };
@@ -75,23 +75,22 @@ const fetchIssues = () => {
 // Request: GET
 // Params: issue number
 // Return: Object
-export const requestIssueHash = issueNumber => {
+export const requestIssueCommentsHash = issueNumber => {
   return dispatch => {
-    return fetchIssue(issueNumber)
+    return fetchIssueComments(issueNumber)
       .then(resp => resp.data)
       .then(data =>
         dispatch({
-          type: ISSUE_RECEIVED,
-          id: data.id,
+          type: ISSUE_COMMENTS_RECEIVED,
+          id: issueNumber,
           payload: data,
         }),
       );
   };
 };
 
-const fetchIssue = issueNumber => {
-  const url =
-    'https://api.github.com/repos/facebook/react/issues/' + issueNumber;
+const fetchIssueComments = issueNumber => {
+  const url = `https://api.github.com/repos/facebook/react/issues/${issueNumber}/comments`;
 
   return axios.get(url);
 };
@@ -104,7 +103,7 @@ export const requestIssuesAndIssueData = () => {
     dispatch(requestIssues()).then(() => {
       const issuesArr = getState().issues.issuesById;
       issuesArr.forEach(issue => {
-        dispatch(requestIssueHash(issue.number));
+        dispatch(requestIssueCommentsHash(issue.number));
       });
     });
   };
