@@ -31,3 +31,13 @@ export const requestIssuesAndIssueData = () => {
   };
 };
 ```
+
+### Running this example
+The boilerplate for this example was created with [create-react-app](https://github.com/facebook/create-react-app).
+
+After cloning and cd, run the following:
+
+```
+$ yarn install
+$ yarn start
+```
