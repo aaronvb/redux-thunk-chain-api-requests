@@ -16,4 +16,16 @@ With the array of issues we can then loop through each issue and fetch it issue 
 So now that we know how to get the data, how can we do this *asynchronously* and cleanly update the state as we go through each issue(providing a better user experience if we chose to display that).
 
 ### The Magic
-<add this>
+It's simple! We can chain each redux-thunk action as long as they return a promise. In our case, we return an axios promise in each of our chained actions. Using `getState` we can provide our second action the data it needs.
+```
+export const requestIssuesAndIssueData = () => {
+  return (dispatch, getState) => {
+    dispatch(requestIssues()).then(() => {
+      const issuesArr = getState().issues.issuesById;
+      issuesArr.forEach(issue => {
+        dispatch(requestIssueCommentsHash(issue.number));
+      });
+    });
+  };
+};
+```
