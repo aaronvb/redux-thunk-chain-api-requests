@@ -91,7 +91,7 @@ export const requestIssueHash = issueNumber => {
 
 const fetchIssue = issueNumber => {
   const url =
-    '/https://api.github.com/repos/facebook/react/issues/' + issueNumber;
+    'https://api.github.com/repos/facebook/react/issues/' + issueNumber;
 
   return axios.get(url);
 };
