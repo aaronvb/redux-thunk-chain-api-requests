@@ -27,3 +27,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.Issues {
+  font-size: 12px;
+}
+
+.Issues > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Issues > ul > li {
+  margin-bottom: 15px;
+}
+
+.Issues > ul > li > a {
+  font-size: 15px;
+}
+
+.Issues > ul > li > div {
+  margin-top: 5px;
+}
+
+.issueComments {
+  font-size: 11px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+
