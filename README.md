@@ -5,6 +5,8 @@ This is an example on how to chain API requests using redux-thunk and axios.
 We need to fetch an initial array of objects that each contain an ID. We then need to individually fetch the objects data with the ID and populate another model with the returned data. It would also *be cool* if we could show an initial list of objects, and update them in the UI as we fetch them individually.
 
 ### Example
+[See the demo](https://aaronvb.github.io/redux-thunk-chain-api-requests/)
+
 In this example app, we will fetch an initial array of issues from https://github.com/facebook/react/issues, and then iterate over every issue in the array to fetch its detailed information(comments, etc) that are not provided in the initial array.
 
 ![redux-thunk-chain-api-example](https://user-images.githubusercontent.com/100900/35554723-c8a62f32-0540-11e8-9c16-2f4a2d66ea6b.gif)
