@@ -11,7 +11,6 @@ class App extends Component {
 
   renderIssues() {
     const issuesById = this.props.issuesById;
-    //const issuesByHash = this.props.issuesByHash;
 
     const issues = issuesById.map(issue => (
       <li key={issue.id}>{issue.title}</li>
