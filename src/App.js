@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {requestIssues} from './modules/issues';
+import {requestIssuesAndIssueData} from './modules/issues';
 import './App.css';
 
 class App extends Component {
   componentWillMount() {
-    this.props.requestIssues()
+    this.props.requestIssuesAndIssueData();
   }
 
   renderIssues() {
@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      requestIssues,
+      requestIssuesAndIssueData,
     },
     dispatch,
   );
