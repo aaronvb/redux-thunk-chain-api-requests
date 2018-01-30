@@ -33,7 +33,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   issuesById: state.issues.issuesById,
-  issuesByHash: state.issues.issuesByHash,
+  issueCommentsByHash: state.issues.issueCommentsByHash,
 });
 
 const mapDispatchToProps = dispatch =>
