@@ -7,6 +7,8 @@ We need to fetch an initial array of objects that each contain an ID. We then ne
 ### Example
 In this example app, we will fetch an initial array of issues from https://github.com/facebook/react/issues, and then iterate over every issue in the array to fetch its detailed information(comments, etc) that are not provided in the initial array.
 
+![redux-thunk-chain-api-example](https://user-images.githubusercontent.com/100900/35554723-c8a62f32-0540-11e8-9c16-2f4a2d66ea6b.gif)
+
 ### How
 Using GitHub's API for issues (https://developer.github.com/v3/issues/), we can get a list of issues from the above repo using `GET /repos/facebook/react/issues`, this will return a response array that contains the issues.
 
