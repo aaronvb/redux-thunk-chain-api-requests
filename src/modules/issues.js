@@ -66,8 +66,8 @@ const fetchIssues = () => {
 
   return axios.get(url, {
     params: {
-      per_page: 10
-    }
+      per_page: 10,
+    },
   });
 };
 
